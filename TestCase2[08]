@@ -15,7 +15,6 @@ public class tc2 {
 		driver.get("https://www.facebook.com/");
 	WebElement ele =  driver.findElement(By.xpath("//span[text()='Create new account']"));
 	System.out.println(ele.getLocation());//[3]
-	System.out.println(ele.getSize());//[4]
 	//cssValue[5]
 	System.out.println(ele.getCssValue("color"));
 	System.out.println(ele.getCssValue("overflow-wrap"));
@@ -28,7 +27,10 @@ public class tc2 {
 	ele2.sendKeys("praveen3439@gmail.com");
 	System.out.println(ele2.getDomAttribute("name"));
 	System.out.println(ele2.getDomProperty("value"));
-	
+	Thread.sleep(2000);
+	ele.click();
+	WebElement ele3 = driver.findElement(By.xpath("//span[text()='Submit']/.."));
+	System.out.println(ele3.getSize());//[4]
 	driver.quit();
 	}
 }
