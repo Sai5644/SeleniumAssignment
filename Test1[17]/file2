@@ -1,0 +1,44 @@
+package keywordframework;
+
+public class SaucewordExecutors {
+	SauceExecutionImplemention k = new SauceExecutionImplemention();
+
+    public void executers(String keyword) {
+
+        if (keyword.equals("LAUNCH_BROWSER")) {
+
+            k.launchBrowser();
+
+        }
+
+        else if (keyword.equals("OPEN_URL")) {
+
+            k.openurl();
+
+        }
+
+        else if (keyword.equals("USER_TF")) {
+
+            k.userntf();
+
+        }
+        else if (keyword.equals("USER2_TF")) {
+        k.usern2tf();
+        }
+
+        else if (keyword.equals("LOGIN_BUTTON")) {
+
+            k.loginbutton();
+
+        }
+
+        else if (keyword.equals("CLOSE_BROWSER")) {
+
+            k.closeBrowser();
+
+        }
+
+    }
+
+
+}
