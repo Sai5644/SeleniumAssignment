@@ -1,0 +1,50 @@
+package usingTestNg;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.testng.annotations.Test;
+
+import BaseClassUtility.BaseClass1;
+import POM.Login;
+
+
+public class SauceDemoTest extends BaseClass1 {
+
+    @Test
+    public void loginTest() throws Exception {
+
+        FileInputStream fis = new FileInputStream(
+                "C:\\Users\\DELL\\OneDrive\\Documents\\test1.xlsx");
+
+        Workbook wb = WorkbookFactory.create(fis);
+        Sheet sh = wb.getSheet("Sheet1");
+        Row row = sh.getRow(1);
+
+        DataFormatter df = new DataFormatter();
+
+        String username = df.formatCellValue(row.getCell(0));
+        String password = df.formatCellValue(row.getCell(1));
+
+        wb.close();
+        fis.close();
+
+        Login l = new Login(driver);
+
+        l.getus(username);
+        l.getpd(password);
+        l.getlogin();
+
+        if (l.verifyProductsPage()) {
+            System.out.println("Products page is displayed");
+        } else {
+            System.out.println("Products page is not displayed");
+        }
+
+        System.out.println("Login test passed");
+    }
+}
