@@ -1,0 +1,20 @@
+package KeyWordFrameworkImplemtation;
+
+import keywordframework.SaucewordExecutors;
+
+public class Saucekeywords {
+	public static void main(String[] args) {
+
+		SaucewordExecutors e = new SaucewordExecutors();
+
+        e.executers("LAUNCH_BROWSER");
+
+        e.executers("OPEN_URL");
+
+        e.executers("USER_TF");
+
+        e.executers("USER_TF");
+
+        e.executers("CLOSE_BROWSER");
+    }
+}
