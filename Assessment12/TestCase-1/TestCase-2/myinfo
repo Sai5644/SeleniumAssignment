@@ -1,0 +1,75 @@
+package orangepom;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class myinfo {
+	WebDriver driver;
+public myinfo(WebDriver driver) throws Exception{
+	this.driver=driver;
+	PageFactory.initElements(driver,this);
+}
+@FindBy(xpath="//span[text()='My Info']")
+private WebElement nf;
+@FindBy(name = "firstName")
+private WebElement fn;
+@FindBy(name = "middleName")
+private WebElement mn;
+@FindBy(name = "lastName")
+private WebElement ln;
+@FindBy(xpath = "//label[text()='Employee Id']/../following-sibling::div//input")
+private WebElement eid;
+@FindBy(xpath = "//p[normalize-space()='* Required']/following-sibling::button")
+private WebElement sv;
+
+
+public void getnf() {
+	nf.click();
+}
+public void getfn(String value) {
+    fn.click();
+    fn.sendKeys(Keys.CONTROL, "a");
+    fn.sendKeys(Keys.BACK_SPACE);
+    fn.sendKeys(value);
+}
+public void getmn(String value) {
+    mn.click();
+    mn.sendKeys(Keys.CONTROL, "a");
+    mn.sendKeys(Keys.BACK_SPACE);
+    mn.sendKeys(value);
+}
+
+public void getln(String value) {
+    ln.click();
+    ln.sendKeys(Keys.CONTROL, "a");
+    ln.sendKeys(Keys.BACK_SPACE);
+    ln.sendKeys(value);
+}
+public void geteid(String value) {
+	eid.click();
+	eid.sendKeys(Keys.CONTROL, "a");
+    eid.sendKeys(Keys.BACK_SPACE);
+    eid.sendKeys(value);
+}
+public void getsv() {
+	sv.click();
+}
+
+public String getfn() {
+    return fn.getAttribute("value");
+}
+public String getmn() {
+return mn.getAttribute("value");
+}
+
+public String getln() {
+    return ln.getAttribute("value");
+}
+public String geteid() {
+    return eid.getAttribute("value");
+}
+
+}
