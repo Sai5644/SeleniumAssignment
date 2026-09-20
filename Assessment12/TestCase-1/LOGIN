@@ -1,0 +1,43 @@
+package orangepom;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LOGIN {
+	WebDriver driver;
+	public LOGIN(WebDriver driver) {
+      this.driver = driver;
+      PageFactory.initElements(driver,this);
+	}
+	@FindBy(name="username")
+	private WebElement un;
+	
+	@FindBy(name="password")
+	private WebElement pwd;
+	
+	@FindBy(css ="[type=\"submit\"]")
+	private WebElement login;
+	
+	@FindBy(xpath = "//span[contains(@class,'oxd-userdropdown-tab')]")
+	private WebElement userDropdown;
+
+	@FindBy(xpath = "//a[text()='Logout']")
+	private WebElement logoutButton;
+	
+	public void getun(String value) {
+		un.sendKeys(value);
+	}
+	public void getpwd(String value) {
+		pwd.sendKeys(value);
+	}
+	public void getlogin() {
+		login.click();
+	}
+	public void logout() {
+	    userDropdown.click();
+	    logoutButton.click();
+	}
+	
+}
