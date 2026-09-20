@@ -1,0 +1,78 @@
+package usingTestNg;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.testng.annotations.Test;
+
+import BaseClassUtility.BaseClass19;
+import junit.framework.Assert;
+import orangepom.LOGIN;
+import orangepom.myinfo;
+
+public class orangetc219 extends BaseClass19{
+@Test
+public void Logintest() throws Exception{
+	FileInputStream fis = new FileInputStream("C:\\Users\\DELL\\OneDrive\\tc219.xlsx");
+	Workbook wb = WorkbookFactory.create(fis);
+	Sheet sh = wb.getSheet("sheet1");
+	Row re = sh.getRow(1);
+	String Username = re.getCell(0).getStringCellValue();
+	String Password = re.getCell(1).getStringCellValue();
+	String Firstname = re.getCell(2).getStringCellValue();
+	String Middelname = re.getCell(5).getStringCellValue();
+	String Lastname = re.getCell(3).getStringCellValue();
+	String Empolyeeid = re.getCell(4).getStringCellValue();
+	
+	wb.close();
+	fis.close();
+	
+	LOGIN l = new LOGIN(driver);
+	l.getun(Username);
+	l.getpwd(Password);
+	l.getlogin();
+	
+	myinfo mi = new myinfo(driver);
+	mi.getnf();
+	Thread.sleep(3000);
+	mi.getfn(Firstname);
+	Thread.sleep(3000);
+	mi.getmn(Middelname);
+	mi.getln(Lastname);
+	Thread.sleep(3000);
+	mi.geteid(Empolyeeid);
+	mi.getsv();
+	Thread.sleep(2000);
+    l.logout();
+    Thread.sleep(2000);
+	
+	l.getun(Username);
+	l.getpwd(Password);
+	l.getlogin();
+	Thread.sleep(2000);
+	mi.getnf();
+	Thread.sleep(3000);
+	System.out.println("Expected First Name: " + Firstname);
+	System.out.println("Actual First Name: " + mi.getfn());
+
+	System.out.println("Expected Middle Name: " + Middelname);
+	System.out.println("Actual Middle Name: " + mi.getmn());
+
+	System.out.println("Expected Last Name: " + Lastname);
+	System.out.println("Actual Last Name: " + mi.getln());
+
+	System.out.println("Expected Employee ID: " + Empolyeeid);
+	System.out.println("Actual Employee ID: " + mi.geteid());
+
+	Assert.assertEquals(mi.getfn(), Firstname);
+	Assert.assertEquals(mi.getmn(), Middelname);
+	Assert.assertEquals(mi.getln(), Lastname);
+	Assert.assertEquals(mi.geteid(), Empolyeeid);
+	l.logout();
+	
+	
+}
+}
