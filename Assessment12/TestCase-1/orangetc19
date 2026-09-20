@@ -1,0 +1,48 @@
+package usingTestNg;
+
+import java.io.FileInputStream;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.testng.annotations.Test;
+import BaseClassUtility.BaseClass19;
+import orangepom.LOGIN;
+import orangepom.Recruitment;
+
+public class orangetc19 extends BaseClass19{
+	@Test
+	public void LoginTest() throws Exception{
+		FileInputStream fis = new FileInputStream("C:\\Users\\DELL\\OneDrive\\tc19.xlsx");
+		 Workbook wb = WorkbookFactory.create(fis);
+		Sheet sh = wb.getSheet("Sheet1");
+		Row r = sh.getRow(1);
+		String Username = r.getCell(0).getStringCellValue();
+		String Password = r.getCell(1).getStringCellValue();
+		wb.close();
+		fis.close();
+	
+		 LOGIN l = new LOGIN(driver);
+		 l.getun(Username);
+	     l.getpwd(Password);
+	     l.getlogin();
+	     
+	     Recruitment re = new Recruitment(driver);
+	     re.getrt();
+	     re.getvc();
+	     re.getadd();
+	     Thread.sleep(3000);
+	    re.getvn("Praveen");
+	    Thread.sleep(3000);
+	     re.getjt();
+	     Thread.sleep(3000);
+	     re.getdr("I completed my collage");
+	     Thread.sleep(3000);
+	     re.gethr("A8DCo 4Ys 010Z");
+	     Thread.sleep(3000);
+	     re.getnp("29");
+	     Thread.sleep(3000);
+	     re.getsv();
+	}
+
+}
