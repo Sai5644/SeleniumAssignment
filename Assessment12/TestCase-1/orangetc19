@@ -19,6 +19,10 @@ public class orangetc19 extends BaseClass19{
 		Row r = sh.getRow(1);
 		String Username = r.getCell(0).getStringCellValue();
 		String Password = r.getCell(1).getStringCellValue();
+		String vn = r.getCell(2).getStringCellValue();
+		String dr = r.getCell(3).getStringCellValue();
+		String hr = r.getCell(4).getStringCellValue();
+		String np = String.valueOf((int) r.getCell(5).getNumericCellValue());
 		wb.close();
 		fis.close();
 	
@@ -32,15 +36,15 @@ public class orangetc19 extends BaseClass19{
 	     re.getvc();
 	     re.getadd();
 	     Thread.sleep(3000);
-	    re.getvn("Praveen");
+	    re.getvn(vn);
 	    Thread.sleep(3000);
 	     re.getjt();
 	     Thread.sleep(3000);
-	     re.getdr("I completed my collage");
+	     re.getdr(dr);
 	     Thread.sleep(3000);
-	     re.gethr("A8DCo 4Ys 010Z");
+	     re.gethr(hr);
 	     Thread.sleep(3000);
-	     re.getnp("29");
+	     re.getnp(np);
 	     Thread.sleep(3000);
 	     re.getsv();
 	}
